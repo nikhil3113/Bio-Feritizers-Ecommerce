@@ -1,0 +1,59 @@
+{
+    "products" :[
+        {
+            "id": 1,
+            "name": "PLANTO ZYME",
+            "price": 12.99,
+            "imgName": "product1.png"
+          },
+          {
+            "id": 2,
+            "name": "PLANTO GRANULES",
+            "price": 14.99,
+            "imgName": "product2.png"
+          },
+          {
+            "id": 3,
+            "name": "PLANTO DRIP",
+            "price": 9.99,
+            "imgName": "product3.png"
+          },
+          {
+            "id": 4,
+            "name": "P-STIM",
+            "price": 19.99,
+            "imgName": "product4.png"
+          },
+          {
+            "id": 5,
+            "name": "PLANTO GRAPES",
+            "price": 19.99,
+            "imgName": "product5.png"
+          },
+          {
+            "id": 6,
+            "name": "PLANTO CHILLI SPECIAL",
+            "price": 19.99,
+            "imgName": "product6.png"
+          },
+          {
+            "id": 7,
+            "name": "PLANTO HORTI +",
+            "price": 19.99,
+            "imgName": "product7.png"
+          },
+          {
+            "id": 8,
+            "name": "BT PLANTO ZYME",
+            "price": 50,
+            "imgName": "product8.png"
+          },
+          {
+            "id": 9,
+            "name": "Planto Hybrid Paddy +",
+            "price": 50,
+            "imgName": "product9.png"
+          }
+          
+    ]
+}

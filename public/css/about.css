@@ -1,0 +1,68 @@
+
+.main-head{
+    margin-left: 7.25em;
+    margin-bottom: 2em;
+}
+.aboutUs{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.aboutUs p{
+    width: 50%;
+}
+.aboutUs img{
+    width: 420px;
+    height: 250px;
+}
+.aboutUs li{
+    margin: 15px 0px;
+}
+ul{
+    list-style:outside;
+}
+.company-head{
+    margin-top: 2em;
+    margin-left: 4.7em;
+    margin-bottom: 1em;
+}
+.company li{
+    margin: 15px 0px;
+}
+.company{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 19px;
+}
+.company img{
+    width: 420px;
+    height: 250px;
+}
+.director-head{
+    margin-left: 4.7em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+.director-row h6{
+    margin-top: 10px;
+}
+
+.award-head{
+    margin-left: 4.7em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+.award{
+    font-size: 18px;
+    margin-bottom: 1em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.award img{
+    width: 300px;
+    height: 225px;
+}
+
+.footer-about {
+    height: 3.5em;
+  }
+ 
+.foot{
+    margin-left: 3em;
+}

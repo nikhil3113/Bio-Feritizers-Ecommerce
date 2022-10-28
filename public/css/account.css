@@ -1,0 +1,27 @@
+.name{
+    font-size: 20px;
+    position: relative;
+    top: 2em;
+}
+.date{
+    font-size: 15px;
+}
+.details{
+    margin-top: 5em;
+    width: 80%;
+}
+.details2{
+    margin-top: 2em;
+    width: 80%;
+}
+.pin, .phone{
+    font-size: 25px;
+}
+.address{
+    font-size: 18px;
+}
+.edit-btn{
+    position: relative;
+    bottom: 2em;
+    left: 8.5em;
+}

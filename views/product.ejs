@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/e30681817d.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link rel="stylesheet" href="css/style.css">
+  <link href="/css/cart.css" rel="stylesheet">
+  <link href="/css/product.css" rel="stylesheet">
+  <script src="/js/store.js" async></script>
+    <title>Pralshar Bio Products Pvt. Ltd.</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+</head>
+<body>
+    <nav class="navbar bg-success">
+        <ul class="nav">
+            <a class="navbar-brand" href="/">
+              <img src="/img/logo.jpg" class="rounded float-left" alt="" width="178" height="49">
+            </a>
+        </ul>
+        <ul class="nav ml-auto">
+            <li class="navbar-brand main-link">
+                <a class="nav-link text-dark " href="/product" >
+                    <i class="fas fa-regular fa-box-archive"></i> Products</a>
+            </li>
+            <li class="navbar-brand main-link">
+                <a class="nav-link text-dark" href="/about" >
+                    <i class="fas fa-regular fa-info-circle"></i> About</a>
+            </li>
+            <li class="navbar-brand main-link">
+                <% if (login){ %>
+                    <!-- Example single danger button -->
+                    <div class="btn-group drop">
+                      <a class="dropdown btn btn-success text-dark nav-link" href="/logout">
+                        <i class="fas fa-regular fa-right-to-bracket"></i> Logout</a>
+                      <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                      </button>
+                      <ul class="dropdown-menu text-dark">
+                        <li><a class="dropdown-item" href="/account">My Account</a></li>
+                        <li><a class="dropdown-item" href="/contact">Contact Us</a></li>
+                      </ul>
+                    </div>
+                  <!-- <a class="nav-link text-dark" href="/logout">
+                    <i class="fas fa-regular fa-right-to-bracket"></i> Logout </a> -->
+                   <% } else {%> 
+                    <a class="nav-link text-dark" href="/login">
+                      <i class="fas fa-regular fa-right-to-bracket"></i> Login</a>
+                   <%} %>
+            </li>
+          </ul>              
+    </nav>
+    <a href="/product/edit" class="btn btn-success">ADD</a>
+    <!-- <div class="container headings">
+        <h2><span class="sub-head">PRALSHAR BIO </span><br> Products Pvt. Ltd. </h2>
+    </div> -->
+    <div class="container cart-symbol d-flex justify-content-end">
+        <a class="text-dark" href="#" data-bs-toggle="modal" data-bs-target="#cart-modal" ><img src="img/cart.png"><button class="btn btn-dark">Cart</button></a>
+    </div>
+
+    <section class="container content-section">
+        <!-- <h2 class="section-header">Products</h2> -->
+        <div class="shop-items">
+            <% items.forEach(function(item){ %>
+                <div class="shop-item" data-item-id="<%= item.id %>">
+                    <span class="shop-item-title"><%= item.name %></span>
+                    <img class="shop-item-image" src="<%= item.imgName %>">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">&#x20B9;<%= item.price%></span>
+                        <span class="shop-item-description"><%= item.description %> </span> 
+                        <button class="btn btn-success shop-item-button" type="button">ADD TO CART</button>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+    <!-- <a href="/product/checkout" class="btn btn-success">checkout</a> -->
+<!-- 
+    <section class="container content-section">
+        <div class="shop-items">
+            <div class="shop-item shadow-sm p-3 mb-5 bg-body rounded">
+                <span class="shop-item-title">PLANTO ZYME</span>
+                <img class="shop-item-image" src="/img/product1.png">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">&#x20B9;12.99</span>
+                    <button class="btn btn-success shop-item-button" type="button"  data-content="Popup with option trigger" rel="popover" data-placement="bottom" data-original-title="Title">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="shop-item shadow-sm p-3 mb-5 bg-body rounded">
+                <span class="shop-item-title">PLANTO GRANULES</span>
+                <img class="shop-item-image" src="/img/product2.png">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">&#x20B9;14.99</span>
+                    <button class="btn btn-success shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="shop-item shadow-sm p-3 mb-5 bg-body rounded">
+                <span class="shop-item-title">PLANTO DRIP</span>
+                <img class="shop-item-image" src="/img/product3.png">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">&#x20B9;9.99</span>
+                    <button class="btn btn-success shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="shop-item shadow-sm p-3 mb-5 bg-body rounded">
+                <span class="shop-item-title">P-STIM</span>
+                <img class="shop-item-image" src="/img/product4.png">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">&#x20B9;19.99</span>
+                    <button class="btn btn-success shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container content-section">
+        <div class="shop-items">
+            <div class="shop-item shadow-sm p-3 mb-5 bg-body rounded">
+                <span class="shop-item-title">PLANTO GRAPES</span>
+                <img class="shop-item-image" src="/img/product5.png">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">&#x20B9;19.99</span>
+                    <button class="btn btn-success shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="shop-item shadow-sm p-3 mb-5 bg-body rounded">
+                <span class="shop-item-title">PLANTO CHILLI SPECIAL</span>
+                <img class="shop-item-image" src="/img/product6.png">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">&#x20B9;6.99</span>
+                    <button class="btn btn-success shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <div class="modal fade" id="cart-modal" tabindex="-1" role="dialog" aria-labelledby="login-heading" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                    <section class="container content-section">
+                        <h2 class="section-header">CART</h2>
+                        <div class="cart-row">
+                            <span class="cart-item cart-header cart-column">ITEM</span>
+                            <span class="cart-price cart-header cart-column">PRICE</span>
+                            <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+                        </div>
+                        <div class="cart-items">
+                        </div>
+                        <div class="cart-total">
+                            <strong class="cart-total-title">Total</strong>
+                            <span class="cart-total-price">0</span>
+                        </div>
+                        <!-- <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button> -->
+                        <a href="/product/checkout" class="btn btn-success btn-purchase">PURCHASE</a>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+
+    <div class="footer text-white bg-success " >  
+            <div class="col-6">
+                <p class="foot">Pralshar Bio Products Pvt. Ltd. 2020 | All Rights Reserved.</p>
+            </div>
+
+    </div>
+
+  
+<script src="/js/jquery.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>

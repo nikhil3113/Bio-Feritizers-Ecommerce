@@ -1,0 +1,41 @@
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: left;
+    height: 5em;
+  }
+.foot{
+    position: relative;
+}
+.foot2{
+    position: relative;
+}
+@media (max-width: 768px){
+    .foot{
+        top: 0.3px;
+    }
+    .cart-symbol{
+        position: fixed;
+        right: 20em;
+    }
+}
+.cart-symbol{
+    position: fixed;
+    top: 10em;
+    left: 7.8em;
+}
+.cart-symbol a{
+    font-weight: bold;
+    text-decoration: none;
+    width: 30px;
+}
+.cart-symbol img{
+    width: 95px;
+}
+.cart-symbol button{
+    width: 5em;
+    position: relative;
+    left: 1em;
+}
