@@ -65,6 +65,7 @@ app.use('/auth', require('./routes/auth'))
 app.use('/admin', require('./routes/admin'))
 app.use('/account', require('./routes/account'))
 app.use('/contact', require('./routes/contact'))
+app.use('/feedback', require('./routes/feedback'))
 
 
 const PORT = process.env.PORT || 5001

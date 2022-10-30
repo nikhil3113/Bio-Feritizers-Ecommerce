@@ -18,7 +18,7 @@ router.post('/adminRegister', authController.adminRegister)
 
 router.post('/adminLogin',
     passport.authenticate('admin', { 
-      successRedirect: '/',
+      successRedirect: '/products',
       failureRedirect: '/admin/login',
       failureFlash:true,
  }))
@@ -26,6 +26,8 @@ router.post('/adminLogin',
  router.post('/product', authController.products)
  
  router.post('/contact', authController.contacts)
+ router.post('/feedback', authController.feebback)
+
 
 
 

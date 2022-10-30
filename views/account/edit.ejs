@@ -47,32 +47,40 @@
           </ul>              
     </nav>
 
-    <div class="container main">
-        <div class="form-style">
-            <form action="/account/<%= user.id %>?_method=PUT" method="post">
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-                    </div>
-                    <input name="phone" value="<%= user.phone %> " class="form-control" placeholder="Phone number" type="tel" maxlength="10" required="true">
-                </div> 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fas fa-solid fa-address-card"></i> </span>
-                    </div>
-                    <!-- <input name="ad" class="form-control" placeholder="Email address" type="email" required="true"> -->
-                    <textarea name="address" class="form-control" placeholder="Address"><%= user.address %> </textarea>
-                </div> 
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fas fa-solid fa-map-pin"></i> </span>
-                    </div>
-                    <input name="pincode" value="<%= user.pincode %> " class="form-control" placeholder="Pincode" type="text" maxlength="6" required="true">
-                </div>                        
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-block"> Edit  </button>
-                </div>        
-            </form>
+    <div class="container shadow-lg p-3 mb-5 bg-white rounded main">
+        <div class="row">
+            <div class="col-6">
+                <img class="edit-image" src="/img/editAccount.png" width="800" alt="img">
+            </div>
+            <div class="col-6">
+                <div class="form-style edit-form">
+                    <form action="/account/<%= user.id %>?_method=PUT" method="post">
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                            </div>
+                            <input name="phone" value="<%= user.phone %> " class="form-control" placeholder="Phone number" type="tel" maxlength="10" required="true">
+                        </div> 
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fas fa-solid fa-address-card"></i> </span>
+                            </div>
+                            <!-- <input name="ad" class="form-control" placeholder="Email address" type="email" required="true"> -->
+                            <textarea name="address" class="form-control" placeholder="Address"><%= user.address %> </textarea>
+                        </div> 
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fas fa-solid fa-map-pin"></i> </span>
+                            </div>
+                            <input name="pincode" value="<%= user.pincode %> " class="form-control" placeholder="Pincode" type="text" maxlength="6" required="true">
+                        </div>                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-block"> Edit  </button>
+                        </div>        
+                    </form>
+                </div>
+            </div>
+           
         </div>
     </div>
 

@@ -10,6 +10,11 @@
     <link href="/css/checkout.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://kit.fontawesome.com/e30681817d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src=
+    "https://smtpjs.com/v3/smtp.js">
+  </script>
     <script type="text/javascript" src="https://checkout.razorpay.com/v1/razorpay.js"></script>
 </head>
 <body>
@@ -36,16 +41,11 @@
             <form id="parent-form">  
                 <div class="col-12">
                     <div class="row gx-3">
-                    <div class="d-flex flex-column">
-                        <p class="text mb-1"><b>Person Name</b></p> <input class="form-control mb-3" type="text" placeholder="<%= name %>" value="<%= name %>" id="name" required>
-                    </div>
+                      <div class="d-flex flex-column">
+                          <p class="text mb-1"><b>Person Name</b></p> <input class="form-control mb-3" type="text" placeholder="<%= name %>" value="<%= name %>" id="name" required>
+                      </div>
                 </div>
-                <div class="col-12">
-                    <div class="d-flex flex-column">
-                        <p class="text mb-1"><b>Card Number</b></p> <input class="form-control mb-3" id="card_number" type="text" placeholder="1234 5678 435678" name="card_number" value="4111 1111 1111 1111" required>
-                    </div>
-                </div>
-                <div class="row">
+                <!-- <div class="row">
                   <div class="col-6">
                       <div class="d-flex flex-column">
                           <p class="text mb-1"><b>Expiry</b></p> <input class="form-control mb-3" id="card_expiry" type="text" placeholder="MM/YY" name="card_expiry" required>
@@ -56,19 +56,41 @@
                           <p class="text mb-1"><b>CVV/CVC</b></p> <input class="form-control mb-3 pt-2 " id="card_cvv" type="password" placeholder="***" name="card_cvv" required>
                       </div>
                   </div>
-                </div>
+                </div> -->
                 <!-- <div class="col-12">
                   <p>To Pay: <%# amount/100 %>  </p> 
               </div> -->
-                <div class="col-12">
+                
                     <!-- <input type="button" value="Make Payment" name="amount" class="btn btn-primary mb-3 submit" onclick="pay();">  -->
-                    <div class="d-grid gap-2">
+                    <!-- <div class="d-grid gap-2">
                       <input type="button" value="Make Payment" name="amount" class="btn btn-primary mb-3 submit" onclick="pay();">
-                    </div>
-                </div>
-                </div>
-            </form>
+                    </div> -->
+
+                
+            </div>
+                <!-- <button id="rzp-button1">Pay</button> -->
+          </form>
+          <div class="row">
+            <div class="col-6">
+              <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_KZXNXVvc44HXUl" async> </script> </form>
+            </div>
+            <div class="col-6">
+              <a href="/product" class="btn btn-primary back">Cancel</a>
+            </div>
+          </div>
+
+              
+              
         </div>
+        <!-- <h4 class="text-center"> Or </h4>
+        <div class="row mt-4">
+          <div class="col-6">
+            <img class="upi" src="/img/upi.png" width="100"><i class="fas fa-solid fa-arrow-right"></i>
+          </div>
+          <div class="col-6">
+            
+          </div>
+        </div> -->
     </div>
     
     <script>
@@ -139,7 +161,7 @@
     razorpay.createPayment(data);
     
     razorpay.on('payment.success', function(resp) {
-      swal("Success!", "<%= name %> Your payment is success, Go can back to Your page", "success");
+      swal("Success!", "<%= name %> Your payment is success, Go can back to Your page ", "success");
       $.ajax({
         url: '/product/checkout/pay-verify',
         type: 'POST',
@@ -148,13 +170,28 @@
           razorpay_order_id: resp.razorpay_order_id,
           razorpay_signature: resp.razorpay_signature,}
         })
+        if('payment.success'){
+          Email.send({
+            Host: "smtp.gmail.com",
+            Username: "classicdummy0@gmail.com",
+            Password: "dummymail123",
+            To: 'nc123465@gmail.com',
+            From: "classicdummy0@gmail.com",
+            Subject: "Sending Email using javascript",
+            Body: "Well that was easy!!",
+      })
+        .then(function (message) {
+          alert("mail sent successfully")
+        });
+          window.setTimeout(function(){ window.location = "/product"; },3000)
+        }
     }); // will pass payment ID, order ID, and Razorpay signature to success handler.
-    
+
       razorpay.on('payment.error', function(resp){swal("Error", "Your payment cannot be happend contact to admin", "error");}); // will pass error object to error handler
     
     
-    };
-    </script>
+    }; 
+  </script>
     </body>
     </html>
     

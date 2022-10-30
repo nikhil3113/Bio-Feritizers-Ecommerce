@@ -28,13 +28,23 @@ function ready() {
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
 }
 
+var total=0
+var expoTotal = 0
+console.log(total)
+
 function purchaseClicked(){
+    if(total==0){
+        alert('Your Cart is Empty')
+    }
+    else{
+        window.location = "/product/checkout";
     alert('Thank you for purchasing! You will be redirected to RazorPay Payment Gateway')
     var cartItems = document.getElementsByClassName('cart-items')[0]
     while(cartItems.hasChildNodes()){
         cartItems.removeChild(cartItems.firstChild)
     }
     updateCartTotal()
+}
 }
 
 function removeCartItem(event){
@@ -92,17 +102,24 @@ function addItemToCart(title, price, imageSrc){
  function updateCartTotal(){
     var cartItemContainer = document.getElementsByClassName('cart-items')[0]
     var cartRows = cartItemContainer.getElementsByClassName('cart-row')
-    var total = 0
+    
     for(var i =0; i<cartRows.length; i++) {
         var cartRow = cartRows[i]
         var priceElement = cartRow.getElementsByClassName('cart-price')[0]
         var quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0]
         var price = parseFloat(priceElement.innerText.replace('₹',''))
         var quantity = quantityElement.value
-        console.log(price)
+        // console.log(price)
         total = total + (price*quantity)
     }
     total = Math.round(total *100) / 100
+    
     document.getElementsByClassName('cart-total-price')[0].innerText = '₹' + total
+    return total
 }
+
+
+
+
+
 

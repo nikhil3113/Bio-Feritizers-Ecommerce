@@ -3,6 +3,7 @@ const Admin = require('../model/Admin')
 const jwt = require('jsonwebtoken')
 const Product = require('../model/Product')
 const Contact = require('../model/Contact')
+const Feedback = require('../model/Feedback')
 require("dotenv").config();
 
 
@@ -135,7 +136,7 @@ exports.products = (req, res) =>{
                         })
                     }
                     if(data){
-                        return res.redirect('/product')
+                        return res.redirect('/products')
                     }
                 })
             })
@@ -184,4 +185,46 @@ exports.contacts = (req, res) =>{
             })
         }
 
+exports.feebback = (req, res) =>{
+    console.log(req.body)
+
+    const {name, phone, email, feedbackFor, message} = req.body
+
     
+        
+    Feedback.findOne({name})
+        .exec((error, user)=>{
+
+            // if(user) return res.render('register',{
+            //     message: 'Email Already In used'
+            // })
+            
+            // if( !name || !feedbackFor || !phone || !email || !message){
+            //     return res.render('feedback/form',{
+            //         message: 'Enter All details'
+            //     }) 
+            // }
+
+            const _user = new Feedback({
+                name : req.body.name,
+                phone: req.body.phone,
+                email: req.body.email,
+                feedbackFor: req.body.feedbackFor,
+                message: req.body.message,
+            })
+
+            _user.save((error, data)=>{
+                if(error) {
+                    console.log(error)
+                    return res.status(400).json({
+
+                        message: 'Something went Wrong'
+                    })
+                }
+                if(data){
+                    return res.redirect('/feedback')
+                }
+            })
+        })
+    }
+

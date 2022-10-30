@@ -4,7 +4,9 @@ const router = express.Router()
 const {ensureAuth, ensureGuest, ensureAdmin} = require('../middleware/auth');
 const fs = require('fs')
 const Product = require('../model/Product')
+const Feedback = require('../model/Feedback')
 const Razorpay = require('razorpay');
+// const {total} = require('../public/js/store')
 
 
 router.get('/',(req,res)=>{
@@ -14,6 +16,7 @@ router.get('/',(req,res)=>{
 // router.get('/product', (req,res)=>{
 //     res.render("product")
 // })
+
 
 // router.get('/product', function(req, res) {
 //     fs.readFile('items.json', function(error, data) {
@@ -28,8 +31,30 @@ router.get('/',(req,res)=>{
 //   })
 
 router.get('/product', ensureAuth, async(req, res)=>{
-  const items = await Product.find()
-  res.render('product', {items: items})
+    const items = await Product.find()
+    res.render('product', {items: items})
+})
+
+//Admin Product
+router.get('/products', ensureAuth, async(req, res)=>{
+    const items = await Product.find()
+    res.render('Admin/adminProduct', {items: items})
+  })
+
+//Admin About
+router.get('/abouts',ensureAuth,(req,res)=>{
+    res.render("Admin/adminAbout")
+})
+//Admin Home
+router.get('/home',ensureAuth,(req,res)=>{
+    res.render("Admin/adminIndex")
+})
+//Admin Feedbacks
+router.get('/feedbacks',ensureAuth,async(req,res)=>{
+    const feedbacks = await Feedback.find()
+    res.render("Admin/adminFeedback",{
+        feedbacks: feedbacks
+    })
 })
 
 //razorPay intigratrion
@@ -41,22 +66,27 @@ router.get('/product/checkout', async(req, res)=>{
     //temp user
     const user = await User.find({user: req.user.id})
     const product = await Product.findOne({product: req.user.id})
-    // console.log(product)
+
+          var options = {
+            // amount: 6000 * 100,
+            amount: 6000*100,
+            currency: 'INR',
+        }
+        instance.orders.create(options, function(err, order){
+            if(err){
+                console.log(err)
+            }
+            else{
+                console.log(order)
+                res.render('checkout', {amount: order.amount, order_id: order.id, email:req.user.email, phone:req.user.phone, address: req.user.address, name: req.user.name})
+            }
+        })
+        
+    
+    
+
     // console.log(product.price)
-    var options = {
-        // amount: 6000 * 100,
-        amount: product.price * 100,
-        currency: 'INR',
-    }
-    instance.orders.create(options, function(err, order){
-        if(err){
-            console.log(err)
-        }
-        else{
-            console.log(order)
-            res.render('checkout', {amount: order.amount, order_id: order.id, email:req.user.email, phone:req.user.phone, address: req.user.address, name: req.user.name})
-        }
-    })
+    
 })
 router.post('/product/checkout/pay-verify', (req, res)=>{
     console.log(req.body)
@@ -91,10 +121,15 @@ router.get('/about', ensureAuth,(req,res)=>{
     res.render("about")
 })
 
-router.get('/secret', async(req, res)=>{
-    const items = await Product.find()
-    res.render('product', {items: items})
-  })
+// router.get('/secret', async(req, res)=>{
+//     const items = await Product.find()
+//     res.render('product', {items: items})
+//   })
+
+router.delete('/product/:id', async(req, res)=>{
+    await Product.findByIdAndDelete(req.params.id)
+    res.redirect('/products')
+})
 
 router.get('/logout', (req, res, next) => {
     req.logout((error)=>{

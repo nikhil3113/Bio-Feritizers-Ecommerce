@@ -10,4 +10,5 @@ router.get('/register',(req,res)=>{
     res.render("Admin/adminRegister")
 })
 
+
 module.exports = router 

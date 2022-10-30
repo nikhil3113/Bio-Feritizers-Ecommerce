@@ -15,24 +15,24 @@
   <link rel="stylesheet" href="css/style.css">
   <link href="/css/cart.css" rel="stylesheet">
   <link href="/css/product.css" rel="stylesheet">
-  <script src="/js/store.js" async></script>
+  <link href="/css/admin/adminProduct.css" rel="stylesheet">
     <title>Pralshar Bio Products Pvt. Ltd.</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
 <body>
     <nav class="navbar bg-success">
         <ul class="nav">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="/home">
               <img src="/img/logo.jpg" class="rounded float-left" alt="" width="178" height="49">
             </a>
         </ul>
         <ul class="nav ml-auto">
             <li class="navbar-brand main-link">
-                <a class="nav-link text-dark " href="/product" >
+                <a class="nav-link text-dark " href="/products" >
                     <i class="fas fa-regular fa-box-archive"></i> Products</a>
             </li>
             <li class="navbar-brand main-link">
-                <a class="nav-link text-dark" href="/about" >
+                <a class="nav-link text-dark" href="/abouts" >
                     <i class="fas fa-regular fa-info-circle"></i> About</a>
             </li>
             <li class="navbar-brand main-link">
@@ -41,14 +41,8 @@
                     <div class="btn-group drop">
                       <a class="dropdown btn btn-success text-dark nav-link" href="/logout">
                         <i class="fas fa-regular fa-right-to-bracket"></i> Logout</a>
-                      <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                      </button>
-                      <ul class="dropdown-menu text-dark">
-                        <li><a class="dropdown-item" href="/account">My Account</a></li>
-                        <li><a class="dropdown-item" href="/feedback">Feedback</a></li>
-                        <li><a class="dropdown-item" href="/contact">Contact Us</a></li>
-                      </ul>
+
+
                     </div>
                   <!-- <a class="nav-link text-dark" href="/logout">
                     <i class="fas fa-regular fa-right-to-bracket"></i> Logout </a> -->
@@ -59,32 +53,33 @@
             </li>
           </ul>              
     </nav>
-    <!-- <a href="/product/edit" class="btn btn-success">ADD</a> -->
-    <!-- <div class="container headings">
-        <h2><span class="sub-head">PRALSHAR BIO </span><br> Products Pvt. Ltd. </h2>
-    </div> -->
-    <div class="container cart-symbol d-flex justify-content-end">
-        <a class="text-dark" href="#" data-bs-toggle="modal" data-bs-target="#cart-modal" ><img src="img/cart.png"><button class="btn btn-dark">Cart</button></a>
+    
+    <div class="add">
+        <a href="/product/edit" class="btn btn-danger add-btn">ADD</a>
     </div>
 
     <section class="container content-section">
         <!-- <h2 class="section-header">Products</h2> -->
         <div class="shop-items">
             <% items.forEach(function(item){ %>
-                <div class="shop-item" data-item-id="<%= item.id %>">
+                <form action="/product/<%= item.id %>?_method=DELETE" method="post">
+                <div class="shop-item shadow-sm" data-item-id="<%= item.id %>">
                     <span class="shop-item-title"><%= item.name %></span>
                     <img class="shop-item-image" src="<%= item.imgName %>">
                     <div class="shop-item-details">
                         <span class="shop-item-price">&#x20B9;<%= item.price%></span>
                         <span class="shop-item-description"><%= item.description %> </span> 
-                        <button class="btn btn-success shop-item-button" type="button">ADD TO CART</button>
+                        
+                            <button type="submit" class="btn btn-danger del"><i class="fas fa-trash"></i></button>
+                        
                     </div>
                 </div>
+            </form>
             <% }) %>
         </div>
     </section>
     <!-- <a href="/product/checkout" class="btn btn-success">checkout</a> -->
-
+<!-- 
     <div class="modal fade" id="cart-modal" tabindex="-1" role="dialog" aria-labelledby="login-heading" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -102,13 +97,12 @@
                                 <strong class="cart-total-title">Total</strong>
                                 <span class="cart-total-price" name="total">0</span>
                             </div>
-                            <!-- <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button> -->
                             <button class="btn btn-success btn-purchase">PURCHASE</button>
                         </form>
                     </section>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 

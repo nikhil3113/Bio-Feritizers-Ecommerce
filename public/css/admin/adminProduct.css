@@ -1,0 +1,12 @@
+.add{
+    position: relative;
+    top: 4.5em;
+    left: 1em;
+    
+}
+.add-btn{
+    width: 100px;
+}
+.del{
+    height: 50px;
+}
