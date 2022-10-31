@@ -29,7 +29,6 @@ function ready() {
 }
 
 var total=0
-var expoTotal = 0
 console.log(total)
 
 function purchaseClicked(){
@@ -115,7 +114,7 @@ function addItemToCart(title, price, imageSrc){
     total = Math.round(total *100) / 100
     
     document.getElementsByClassName('cart-total-price')[0].innerText = '₹' + total
-    return total
+
 }
 
 

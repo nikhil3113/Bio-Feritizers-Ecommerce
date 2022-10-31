@@ -55,8 +55,9 @@ app.use(methodOverride('_method'))
 
 app.use(express.json())
 
-
+if('NODE_ENV != production'){
 app.use(morgan('dev'))
+}
 
 
 
