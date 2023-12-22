@@ -16,6 +16,25 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
   <link href="/css/style.css" rel="stylesheet">
+
+  <script>
+    // Function to detect if the device is a desktop
+    function isDesktop() {
+        return window.innerWidth > 768; // Adjust the threshold as needed
+    }
+
+    // Function to show an alert if not on desktop
+    function showAlert() {
+        alert("This page is optimized for desktop. Please use a desktop device to access the site.");
+    }
+
+    // Check if the device is not a desktop and show an alert
+    document.addEventListener("DOMContentLoaded", function() {
+        if (!isDesktop()) {
+            showAlert();
+        }
+    });
+</script>
   
 
     <title>Pralshar Bio Products Pvt. Ltd.</title>
