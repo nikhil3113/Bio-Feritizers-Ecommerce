@@ -16,7 +16,6 @@ const methodOverride = require('method-override')
 dotenv.config({path: './config/config.env'})
  
 connectDB()
-// MONGO_URI = mongodb+srv://nikhil123:nikhil123@miniproject.178oh4l.mongodb.net/?retryWrites=true&w=majority
 
 const app = express()
   
